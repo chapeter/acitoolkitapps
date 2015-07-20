@@ -4,18 +4,6 @@ APIC_IP=
 APIC_USERNAME=
 APIC_PASSWORD=
 
-#build the required nodes
-#echo "building Snapback container"
-#sudo docker build --no-cache --tag chapeter/snapback snap
-#echo "Building DB container"
-#sudo docker build --no-cache --tag chapeter/db db
-#echo "Building App Container"
-#sudo docker build --no-cache -t chapeter/app app
-#echo "Building Web Container"
-#sudo docker build --no-cache -t chapeter/web web
-#echo "Building Viz Container"
-#sudo docker build --no-cache -t chapeter/viz viz
-
 #launch the db node
 echo "********************"
 echo "*Launching Database*"
@@ -40,9 +28,14 @@ echo "********************"
 echo "*Launching Snapback*"
 echo "********************"
 sudo docker run -d -p 5002:5002 --name snapback chapeter/snapback
+echo "********************"
+echo "*Launching Webtools*"
+echo "********************"
+sudo docker run -p 5003:80 -d dockercisco/aci
 
-echo "********************"
-echo "* localhost:5000   *"
-echo "* localhost:5001   *"
-echo "* localhost:5002   *"
-echo "********************"
+echo "*************************************"
+echo "* localhost:5000 - Endpoint Tracker *"
+echo "* localhost:5001 - Vizualizer       *"
+echo "* localhost:5002 - Snapback         *"
+echo "* localhost:5003 - Webtools         *"
+echo "*************************************"
