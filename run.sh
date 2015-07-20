@@ -34,7 +34,7 @@ echo "********************"
 sudo docker run -p 5003:80 -d dockercisco/aci
 
 echo "Launching Config Explorer"
-sudo docker run -d -p 5004:5004 --name confexplorer chapeter/confexplorer /opt/confexplorer/explorer.py -u https://$APIC_IP -l $APIC_USERNAME -p $APIC_PASSWORD --ip 0.0.0.0 --port 5004
+sudo docker run -d -p 5004:5004 --name confexplorer chapeter/confexplorer python /opt/confexplorer/explorer.py -u http://$APIC_IP -l $APIC_USERNAME -p $APIC_PASSWORD --ip 0.0.0.0 --port 5004
 
 echo "*************************************"
 echo "* localhost:5000 - Endpoint Tracker *"
