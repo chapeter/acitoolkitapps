@@ -1,8 +1,8 @@
 #!/bin/bash
 
-APIC_IP=
-APIC_USERNAME=
-APIC_PASSWORD=
+APIC_IP=10.94.238.68
+APIC_USERNAME=admin
+APIC_PASSWORD=cisco123
 
 #launch the db node
 echo "********************"
@@ -34,7 +34,7 @@ echo "********************"
 sudo docker run -p 5003:80 -d dockercisco/aci
 
 echo "Launching Config Explorer"
-sudo docker run -d -p 5004:5004 --name confexplorer chapeter/confexplorer python /opt/confexplorer/explorer.py -u http://$APIC_IP -l $APIC_USERNAME -p $APIC_PASSWORD --ip 0.0.0.0 --port 5004
+sudo docker run -d -p 5004:5004 --name confexplorer chapeter/confexplorer python /opt/confexplorer/explorer.py -u http://$APIC_IP -l $APIC_USERNAME -p $APIC_PASSWORD --host 0.0.0.0 --port 5004
 
 echo "*************************************"
 echo "* localhost:5000 - Endpoint Tracker *"
