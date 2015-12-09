@@ -33,6 +33,11 @@ echo "*Launching Webtools*"
 echo "********************"
 sudo docker run -p 5003:80 -d dockercisco/aci
 
+echo "********************"
+echo "*Launching Migrate *"
+echo "********************"
+sudo docker run -p 5004:5000 -d kecorbin/acimigrate
+
 echo "Launching Config Explorer"
 sudo docker run -d -p 5004:5004 --name confexplorer chapeter/confexplorer python /opt/confexplorer/explorer.py -u http://$APIC_IP -l $APIC_USERNAME -p $APIC_PASSWORD --host 0.0.0.0 --port 5004
 
